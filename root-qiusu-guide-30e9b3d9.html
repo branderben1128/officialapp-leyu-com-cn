@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球速体育 · 简明使用指引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #f4f9fc 0%, #e6f3f0 100%);
+            min-height: 100vh;
+            padding: 1.5rem 1rem 3rem;
+            color: #1e2b3c;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0c4a6e 0%, #0f766e 80%);
+            border-radius: 2rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 2.5rem;
+            color: white;
+            box-shadow: 0 12px 30px rgba(12, 74, 110, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 640px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.18);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* 网格卡片区 */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 920px) {
+            .feature-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.75rem 1.5rem 1.5rem;
+            box-shadow: 0 4px 14px rgba(0, 30, 40, 0.06);
+            border: 1px solid #dbe8ed;
+            transition: transform 0.15s, box-shadow 0.2s;
+            backdrop-filter: blur(2px);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(12, 74, 110, 0.10);
+            border-color: #9bc8d0;
+        }
+
+        .card .icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.6rem;
+            display: inline-block;
+            background: #dcf2ef;
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            border-radius: 14px;
+            color: #0f766e;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #0c4a6e;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2b4456;
+        }
+
+        .card .tag {
+            display: inline-block;
+            margin-top: 0.7rem;
+            font-size: 0.75rem;
+            background: #e6f3f0;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            color: #0f766e;
+        }
+
+        /* 简明指南区 */
+        .guide-section {
+            background: #ffffffdd;
+            backdrop-filter: blur(6px);
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #cde0e6;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        .guide-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0c4a6e;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid #14b8a6;
+            display: inline-block;
+        }
+
+        .guide-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .guide-step .num {
+            background: #0f766e;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .guide-step .desc {
+            flex: 1;
+        }
+
+        .guide-step .desc strong {
+            color: #0c4a6e;
+        }
+
+        .guide-note {
+            background: #f0f9f6;
+            border-left: 4px solid #14b8a6;
+            padding: 1rem 1.2rem;
+            border-radius: 14px;
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #1f3e4c;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem 1.8rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            margin-bottom: 2rem;
+            border: 1px solid #d0e2e8;
+        }
+
+        .faq-mini h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0c4a6e;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .faq-item {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #e6f0f3;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item q {
+            font-weight: 500;
+            color: #1f4459;
+        }
+
+        .faq-item .ans {
+            display: block;
+            margin-top: 0.2rem;
+            font-size: 0.9rem;
+            color: #3f6277;
+            padding-left: 0.6rem;
+            border-left: 2px solid #14b8a6;
+        }
+
+        /* 带链接段落 */
+        .link-sentence {
+            background: #f3faf9;
+            padding: 1.2rem 1.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid #c7dfdc;
+            font-size: 0.95rem;
+        }
+
+        .link-sentence a {
+            color: #0f766e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1.5px solid #14b8a6;
+            padding-bottom: 1px;
+            transition: color 0.1s;
+        }
+
+        .link-sentence a:hover {
+            color: #0a5c56;
+            border-bottom-color: #0a5c56;
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #5e7d8a;
+            background: #eaf3f1;
+            padding: 0.8rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 0.8rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            text-align: center;
+            color: #658490;
+            font-size: 0.8rem;
+            border-top: 1px solid #c8d9dd;
+            padding-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Hero 简明介绍 -->
+    <div class="hero">
+        <h1>球速体育 · 使用指引</h1>
+        <div class="sub">
+            面向日常体育信息获取的清爽入口。保持简明，重视体验，专注可靠的内容呈现方式。
+        </div>
+        <span class="badge">⚡ 快速开始 · 访问提醒</span>
+    </div>
+
+    <!-- 亮点卡片网格 -->
+    <div class="feature-grid">
+        <div class="card">
+            <div class="icon">📋</div>
+            <h3>摘要式界面</h3>
+            <p>信息经过结构化梳理，减少冗余跳转。赛程、数据、动态以卡片分层呈现，一目了然。</p>
+            <span class="tag">信息密度适中</span>
+        </div>
+        <div class="card">
+            <div class="icon">🔄</div>
+            <h3>多场景适配</h3>
+            <p>移动端与桌面端同样流畅；深色浅色模式自适应，适合全天候快速浏览。</p>
+            <span class="tag">响应式布局</span>
+        </div>
+        <div class="card">
+            <div class="icon">🔒</div>
+            <h3>克制的引导</h3>
+            <p>不过度强调跳转，仅在需要时提供说明。保持访问过程的自主性与透明度。</p>
+            <span class="tag">无诱导设计</span>
+        </div>
+        <div class="card">
+            <div class="icon">🕒</div>
+            <h3>更新节奏</h3>
+            <p>内容按赛事周期刷新，避免信息过载。关键变动会以标注形式突出。</p>
+            <span class="tag">节奏可控</span>
+        </div>
+        <div class="card">
+            <div class="icon">🧭</div>
+            <h3>场景化入口</h3>
+            <p>按「快速浏览」「深度数据」「赛事跟踪」等场景提供不同路径，按需选择。</p>
+            <span class="tag">灵活切换</span>
+        </div>
+        <div class="card">
+            <div class="icon">📌</div>
+            <h3>访问提醒</h3>
+            <p>请确认网络环境与设备设置。建议使用主流浏览器，以获得完整布局与安全体验。</p>
+            <span class="tag">安全提示</span>
+        </div>
+    </div>
+
+    <!-- 简明指南版块 -->
+    <div class="guide-section">
+        <h2>📌 简明指南</h2>
+        <div class="guide-step">
+            <div class="num">1</div>
+            <div class="desc"><strong>定位目标</strong> – 进入首页后，顶部导航区分「赛事」「数据」「资讯」三类。根据关注点直接点击对应标签。</div>
+        </div>
+        <div class="guide-step">
+            <div class="num">2</div>
+            <div class="desc"><strong>筛选与排序</strong> – 列表页提供日期、联赛、状态等筛选项。可用下拉菜单快速缩小范围，减少滑动。</div>
+        </div>
+        <div class="guide-step">
+            <div class="num">3</div>
+            <div class="desc"><strong>详情与操作</strong> – 点击卡片标题展开完整信息。部分页面提供图表切换按钮，可按需查看趋势或对比。</div>
+        </div>
+        <div class="guide-step">
+            <div class="num">4</div>
+            <div class="desc"><strong>保持更新</strong> – 重要变动会以站内信或标记形式提示。建议定期清理缓存，确保样式与数据同步。</div>
+        </div>
+
+        <div class="guide-note">
+            💡 若需直接访问主站，可在浏览器地址栏输入域名，或通过书签直达。
+            本页仅为功能说明，不替代实际页面操作。
+        </div>
+    </div>
+
+    <!-- 自然嵌入链接的句子 (关键要求) -->
+    <div class="link-sentence">
+        ✦ 若希望进一步体验完整功能，可尝试直接访问 <a href="https://root-qiusu.com">球速体育</a>，了解赛程、数据与资讯模块的整合呈现。页面默认采用自适应布局，无需额外设置。
+    </div>
+    <div class="link-sentence">
+        ✦ 对于首次使用的用户，建议先浏览公开的赛事概览板块。通过 <a href="https://root-qiusu.com">球速体育</a> 的导航体系，能够较快建立对信息结构的整体印象。
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <h2>❓ 常见疑问摘要</h2>
+        <div class="faq-item">
+            <q>是否需要注册才能浏览大部分内容？</q>
+            <span class="ans">多数赛事列表与基础数据可直接查看。部分深度分析或个性化功能可能需要登录，页面会有明确提示。</span>
+        </div>
+        <div class="faq-item">
+            <q>移动端与桌面端体验有差异吗？</q>
+            <span class="ans">核心功能一致。移动端针对触摸操作进行了间距与交互优化，桌面端则提供更丰富的筛选侧栏。</span>
+        </div>
+        <div class="faq-item">
+            <q>如何反馈使用中遇到的问题？</q>
+            <span class="ans">页面底部通常设有反馈入口或联系方式。描述问题时附上浏览器版本与截图，有助于快速定位。</span>
+        </div>
+        <div style="margin-top: 0.8rem; font-size: 0.85rem; color: #3f6f7a;">
+            ⚡ 更多细节可在实际浏览中逐渐熟悉，不必一次性记下所有功能。
+        </div>
+    </div>
+
+    <!-- 可信克制的访问说明 -->
+    <div style="background: #f7fcfb; border-radius: 1.5rem; padding: 1.2rem 1.5rem; border: 1px solid #c8e2de;">
+        <p style="font-weight: 500; color: #0c4a6e; margin-bottom: 0.3rem;">📎 访问说明</p>
+        <ul style="list-style: none; padding-left: 0; font-size: 0.9rem; color: #2a4b5a;">
+            <li style="padding: 0.2rem 0;">• 请确保使用支持 HTTPS 的现代浏览器，以获得最佳加密体验。</li>
+            <li style="padding: 0.2rem 0;">• 部分资源可能因网络环境加载延迟，属于正常现象。可尝试刷新或切换网络。</li>
+            <li style="padding: 0.2rem 0;">• 本站未使用自动播放、弹窗广告等干扰性元素。所有交互由用户主动触发。</li>
+            <li style="padding: 0.2rem 0;">• 若遇到显示异常，可尝试清除浏览器缓存或查看帮助页面。</li>
+        </ul>
+        <div class="disclaimer">* 本页内容仅供功能参考，不构成任何形式的承诺或保证。</div>
+    </div>
+
+    <div class="footer-note">
+        球速体育 · 页面版本 2025 · 基于真实使用场景撰写
+    </div>
+
+</div>
+</body>
+</html>
